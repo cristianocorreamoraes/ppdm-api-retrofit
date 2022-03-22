@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.cristianomoraes.libri_retrofit.model.Usuario;
 import com.cristianomoraes.libri_retrofit.remote.APIUtils;
-import com.cristianomoraes.libri_retrofit.remote.UsuarioInterface;
+import com.cristianomoraes.libri_retrofit.remote.RouterInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 public class CadastroUsusario extends AppCompatActivity {
 
-    UsuarioInterface usuarioInterface;
+    RouterInterface routerInterface;
     EditText txtNome;
     EditText txtSobrenome;
     EditText txtEmail;
@@ -39,7 +39,7 @@ public class CadastroUsusario extends AppCompatActivity {
 
         btnInserir = findViewById(R.id.btnCadastrarUsuario);
 
-        usuarioInterface = APIUtils.getUsuarioInterface();
+        routerInterface = APIUtils.getUsuarioInterface();
 
         btnInserir.setOnClickListener(view -> {
 
@@ -60,7 +60,7 @@ public class CadastroUsusario extends AppCompatActivity {
 
     public void addUsuario(Usuario usuario){
 
-        Call<Usuario> call = usuarioInterface.addUsuario(usuario);
+        Call<Usuario> call = routerInterface.addUsuario(usuario);
 
         call.enqueue(new Callback<Usuario>() {
 

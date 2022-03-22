@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.cristianomoraes.libri_retrofit.helpers.Login;
 import com.cristianomoraes.libri_retrofit.model.Usuario;
 
 import com.cristianomoraes.libri_retrofit.remote.APIUtils;
-import com.cristianomoraes.libri_retrofit.remote.UsuarioInterface;
+import com.cristianomoraes.libri_retrofit.remote.RouterInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    UsuarioInterface usuarioInterface;
+    RouterInterface routerInterface;
     Button btnCadastrar;
     Button btnLogar;
     EditText txtLogin;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usuarioInterface = APIUtils.getUsuarioInterface();
+        routerInterface = APIUtils.getUsuarioInterface();
 
         this.btnCadastrar = findViewById(R.id.btnCadastrarUsuario);
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getUsuarioList(String login, String senha){
 
-        Call<List<Usuario>> call = usuarioInterface.getUsuario(login, senha);
+        Call<List<Usuario>> call = routerInterface.getUsuario(login, senha);
 
         call.enqueue(new Callback<List<Usuario>>() {
             @Override

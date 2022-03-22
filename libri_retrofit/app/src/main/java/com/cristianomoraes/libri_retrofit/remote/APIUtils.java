@@ -5,11 +5,11 @@ public class APIUtils {
     public APIUtils() {
     }
 
-    public static final String API_URL = "http://10.107.131.33:3000/";
+    public static final String API_URL = "http://10.107.131.49:3000/";
 
-    public static UsuarioInterface getUsuarioInterface(){
+    public static RouterInterface getUsuarioInterface(){
 
-        return RetrofitClient.getClient(API_URL).create(UsuarioInterface.class);
+        return RetrofitClient.getClient(API_URL).create(RouterInterface.class);
 
     }
 
