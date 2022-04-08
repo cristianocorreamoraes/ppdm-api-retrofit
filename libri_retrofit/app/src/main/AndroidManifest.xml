@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Libri_retrofit"
         android:usesCleartextTraffic="true">
-<!--        <activity-->
-<!--            android:name=".CadastroLivro"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".AlterarLivro"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroLivro"
+            android:exported="false" />
         <activity
             android:name=".FeedLivro"
             android:exported="false">
@@ -31,7 +34,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".CadastroLivro"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

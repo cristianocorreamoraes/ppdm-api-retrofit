@@ -16,7 +16,7 @@ import retrofit2.http.Path;
 public interface RouterInterface {
 
     /***** ROTAS DE USUÁRIOS *****/
-    @GET("/usuario/listarUsuario/{login}/{senha}")
+    @GET("/usuario/logarUsuario/{login}/{senha}")
     Call<List<Usuario>>getUsuario(@Path("login") String login, @Path("senha") String senha);
 
     @POST("/usuario/cadastrarUsuario")
@@ -24,9 +24,18 @@ public interface RouterInterface {
 
     /***** ROTAS DE LIVROS *****/
     @GET("/livro/listarLivro")
-    Call<List<Livro>>getLivros(@Path("login") String login, @Path("senha") String senha);
+    Call<List<Livro>>getLivros();
+
+    @GET("/livro/listarLivroId/{cod_livro}")
+    Call<List<Livro>>getLivrosId(@Path("cod_livro") int cod_livro);
 
     @POST("/livro/cadastrarLivro")
     Call<Livro> addLivro(@Body Livro livro);
+
+    @PUT("/livro/alterarLivro")
+    Call<Livro> updateLivro(@Body Livro livro);
+
+    @DELETE("/livro/excluirLivro/{cod_livro}")
+    Call<Livro> deleteLivro(@Path("cod_livro") int cod_livro);
 
 }

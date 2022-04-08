@@ -5,7 +5,7 @@ public class APIUtils {
     public APIUtils() {
     }
 
-    public static final String API_URL = "http://10.107.131.49:3000/";
+    public static final String API_URL = "http://10.107.131.86:3000/";
 
     public static RouterInterface getUsuarioInterface(){
 

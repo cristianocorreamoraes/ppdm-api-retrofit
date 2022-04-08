@@ -68,7 +68,9 @@ public class CadastroUsusario extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(CadastroUsusario.this, "USUÁRIO INSERIDO COM SUCESSO", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroUsusario.this,
+                            "USUÁRIO INSERIDO COM SUCESSO",
+                            Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -59,7 +59,9 @@ public class CadastroLivro extends AppCompatActivity {
             public void onResponse(Call<Livro> call, Response<Livro> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(CadastroLivro.this, "LIVRO INSERIDO COM SUCESSO", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroLivro.this,
+                            "LIVRO INSERIDO COM SUCESSO",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 

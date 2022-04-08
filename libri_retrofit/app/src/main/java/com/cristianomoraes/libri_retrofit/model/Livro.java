@@ -37,7 +37,6 @@ public class Livro {
         this.imagem = imagem;
     }
 
-
     public int getCod_livro() {
         return cod_livro;
     }

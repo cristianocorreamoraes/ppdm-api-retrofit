@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static Retrofit retrofit =null;
+    private static Retrofit retrofit = null;
 
     public static Retrofit getClient(String url){
 
@@ -20,7 +20,7 @@ public class RetrofitClient {
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(url)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(GsonConverterFactory.create(gson))//removido parametro de objeto gson do método create()
                     .build();
         }
 
