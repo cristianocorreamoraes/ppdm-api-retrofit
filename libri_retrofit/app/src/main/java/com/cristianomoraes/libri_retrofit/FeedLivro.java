@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cristianomoraes.libri_retrofit.model.Item;
 import com.cristianomoraes.libri_retrofit.model.Livro;
@@ -29,6 +30,7 @@ public class FeedLivro extends AppCompatActivity {
 
     RouterInterface routerInterface;
     List<Livro> list = new ArrayList<Livro>();
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class FeedLivro extends AppCompatActivity {
                     /** FIM DO CARREGAMENTO DE ITENS **/
 
                     /** INICIO DO RECYCLERVIEW **/
-                    RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                    recyclerView = findViewById(R.id.recyclerView);
                     recyclerView.setAdapter(new LivroAdapter(itens));
                     /** INICIO DORECYCLERVIEW **/
 
@@ -138,7 +140,30 @@ public class FeedLivro extends AppCompatActivity {
                                 startActivity(intent);
 
                             })
-                            .setNegativeButton("EXCLUIR", (dialog1, witch)->{});
+                            .setNegativeButton("EXCLUIR", (dialog1, witch)->{
+
+                                routerInterface = APIUtils.getUsuarioInterface();
+
+                                Call<Livro> call = routerInterface.deleteLivro(cod_livro);
+
+                                call.enqueue(new Callback<Livro>() {
+                                    @Override
+                                    public void onResponse(Call<Livro> call,
+                                                           Response<Livro> response) {
+                                        Toast.makeText(FeedLivro.this,
+                                                "LIVRO EXLCLUÍDO COM SUCESSO",
+                                                Toast.LENGTH_SHORT).show();
+
+                                        startActivity(new Intent(FeedLivro.this, FeedLivro.class));
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Livro> call, Throwable t) {
+                                        Log.d("ERRO-", t.getMessage());
+                                    }
+                                });
+
+                            });
 
                     alertDialog.show();
 
